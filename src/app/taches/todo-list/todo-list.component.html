@@ -1,0 +1,39 @@
+<div>
+    <h2>Ajouter une tâche</h2>
+    <!-- NgModel-->
+    <input type="text" [(ngModel)]="tacheVide" name="titre" placeholder="Ajouter une tâche">
+    <button (click)="ajouterTache(tacheVide)">Ajouter</button>
+</div>
+
+<div>
+    <h2>Liste des tâches à faire</h2>
+    <ul>
+        @for (tache of taches; track tache.titre) {
+        @if (!tache.fait) {
+        <li [ngClass]="{'pending': !tache.fait}">
+            {{tache.titre}}
+            <img [src]="checkTache" class="check" (click)="tacheFaite(tache.titre)">
+        </li>
+        }
+        }
+    </ul>
+</div>
+
+<div>
+    <h2>Liste des tâches effectuée(s)</h2>
+    <ul>
+        @for (tache of taches; track tache.titre) {
+            @if (tache.fait) {
+                <li [ngClass]="{'completed': tache.fait}">
+                    La tache 
+                    {{tache.titre}} 
+                    a été faite le 
+                    {{tache.date | date:'shortDate'}}
+                    <img [src]="deleteTache" class="delete" (click)="supprimerTache(tache.titre)">
+                </li>
+            }
+        }
+    </ul>
+</div>
+
+
