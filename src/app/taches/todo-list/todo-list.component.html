@@ -12,7 +12,10 @@
         @if (!tache.fait) {
         <li [ngClass]="{'pending': !tache.fait}">
             {{tache.titre}}
-            <img [src]="checkTache" class="check" (click)="tacheFaite(tache.titre)">
+            <div>
+                <img [src]="checkTache" class="check" (click)="tacheFaite(tache.titre)">
+                <img [src]="deleteTache" class="delete" (click)="supprimerTache(tache.titre)">
+            </div>
         </li>
         }
         }
