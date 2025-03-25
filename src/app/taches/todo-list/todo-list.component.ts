@@ -11,8 +11,8 @@ import { DatePipe, NgClass } from '@angular/common';
 })
 export class TodoListComponent {
 
-  checkTache: string = "assets/check.png";
-  deleteTache: string ="assets/cross.png";
+  checkTache: string = 'assets/check.png';
+  deleteTache: string ='assets/cross.png';
 
   taches: Tache[] = [
     { titre: 'Apprendre Angular', fait: false, date: new Date() },
@@ -20,7 +20,7 @@ export class TodoListComponent {
     { titre: 'Tester l\'application',fait: true, date: new Date() }
   ];
 
-  tacheVide: string = "";
+  titreTacheVide: string = '';
 
   ajouterTache(titre: string) {
     if (titre.length === 0) {
@@ -32,8 +32,6 @@ export class TodoListComponent {
       fait: false,
       date: new Date()
     });
-
-    console.log(this.taches);
   }
 
   supprimerTache(titre: string) {

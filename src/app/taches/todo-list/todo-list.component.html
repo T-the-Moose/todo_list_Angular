@@ -1,24 +1,24 @@
 <div>
     <h2>Ajouter une tâche</h2>
     <!-- NgModel-->
-    <input type="text" [(ngModel)]="tacheVide" name="titre" placeholder="Ajouter une tâche">
-    <button (click)="ajouterTache(tacheVide)">Ajouter</button>
+    <input type="text" [(ngModel)]="titreTacheVide" name="titre" placeholder="Nom de la tache à ajouter">
+    <button (click)="ajouterTache(titreTacheVide)">Ajouter</button>
 </div>
 
 <div>
     <h2>Liste des tâches à faire</h2>
     <ul>
         @for (tache of taches; track tache.titre) {
-        @if (!tache.fait) {
-        <li [ngClass]="{'pending': !tache.fait}">
-            {{tache.titre}}
-            <div>
-                <img [src]="checkTache" class="check" (click)="tacheFaite(tache.titre)">
-                <img [src]="deleteTache" class="delete" (click)="supprimerTache(tache.titre)">
-            </div>
-        </li>
-        }
-        }
+            @if (!tache.fait) {
+                <li [ngClass]="{'pending': !tache.fait}">
+                    {{tache.titre}}
+                    <div>
+                        <img [src]="checkTache" class="check" (click)="tacheFaite(tache.titre)">
+                        <img [src]="deleteTache" class="delete" (click)="supprimerTache(tache.titre)">
+                    </div>
+                </li>
+            }
+        }   
     </ul>
 </div>
 
@@ -31,7 +31,7 @@
                     La tache 
                     {{tache.titre}} 
                     a été faite le 
-                    {{tache.date | date:'shortDate'}}
+                    {{tache.date | date:'dd/MM/yyyy'}}
                     <img [src]="deleteTache" class="delete" (click)="supprimerTache(tache.titre)">
                 </li>
             }
